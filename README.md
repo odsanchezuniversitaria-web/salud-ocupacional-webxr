@@ -5,7 +5,7 @@ Piloto compilado de 15 actividades para navegador de PC, celular y Meta Quest (W
 Abrir **Comenzar práctica**. En Quest, usar el navegador de las gafas y después **Entrar en VR**.
 
 - PC: WASD, clic derecho para mirar incluso durante una misión, clic sostenido para arrastrar.
-- Celular: controles CAMINAR y MIRAR; mantener el dedo para arrastrar.
+- Celular: jugar en horizontal; botón superior derecho para entrar/salir de pantalla completa. Joystick CAMINAR y control MIRAR; mantener el dedo sobre objetos para arrastrar. Deslizar dentro de los paneles para ver todo el contenido.
 - Quest: mandos, gatillo/agarre para interactuar, joystick izquierdo para caminar.
 - Los paneles se pueden minimizar sin cerrar la actividad.
 
