@@ -1,31 +1,19 @@
 {
-  "Build/WebComplete.427cc7c3c2b4.data.unityweb": {
-    "size": 557313015,
+  "Build/WebComplete.0b20a5a7a212.data.unityweb": {
+    "size": 267547333,
     "chunks": [
-      "Build/WebComplete.data.unityweb.000.6c314d3b5dfd.part",
-      "Build/WebComplete.data.unityweb.001.6d2f3e6ce37b.part",
-      "Build/WebComplete.data.unityweb.002.1dcda9bec64c.part",
-      "Build/WebComplete.data.unityweb.003.aab936e28d7c.part",
-      "Build/WebComplete.data.unityweb.004.47ce2bc5c63e.part",
-      "Build/WebComplete.data.unityweb.005.de49bb6692df.part",
-      "Build/WebComplete.data.unityweb.006.33eedf06964e.part",
-      "Build/WebComplete.data.unityweb.007.2df6a36bf65c.part",
-      "Build/WebComplete.data.unityweb.008.eac8d42d3944.part",
-      "Build/WebComplete.data.unityweb.009.a465e221a33b.part",
-      "Build/WebComplete.data.unityweb.010.f50af7165529.part",
-      "Build/WebComplete.data.unityweb.011.3720a842ed19.part",
-      "Build/WebComplete.data.unityweb.012.a953471ae205.part",
-      "Build/WebComplete.data.unityweb.013.d4fe57a502cf.part",
-      "Build/WebComplete.data.unityweb.014.9dc6f3fc8264.part",
-      "Build/WebComplete.data.unityweb.015.0456fd724500.part",
-      "Build/WebComplete.data.unityweb.016.7dabe75964a0.part",
-      "Build/WebComplete.data.unityweb.017.1d185da52d51.part",
-      "Build/WebComplete.data.unityweb.018.55cd2984c4c9.part",
-      "Build/WebComplete.data.unityweb.019.a1f8fd8f328e.part",
-      "Build/WebComplete.data.unityweb.020.4a444b338333.part",
-      "Build/WebComplete.data.unityweb.021.9099c941ca58.part",
-      "Build/WebComplete.data.unityweb.022.b7d597d3d686.part"
+      "Build/WebComplete.data.unityweb.000.a359e995abc3.part",
+      "Build/WebComplete.data.unityweb.001.54b8fbb1c6f1.part",
+      "Build/WebComplete.data.unityweb.002.580b53a74747.part",
+      "Build/WebComplete.data.unityweb.003.7d00eb11f767.part",
+      "Build/WebComplete.data.unityweb.004.c5489a33c956.part",
+      "Build/WebComplete.data.unityweb.005.a00c884c877a.part",
+      "Build/WebComplete.data.unityweb.006.d7aaf71a9dfb.part",
+      "Build/WebComplete.data.unityweb.007.f3676d710e8e.part",
+      "Build/WebComplete.data.unityweb.008.f271ba085e84.part",
+      "Build/WebComplete.data.unityweb.009.e4cff12e6194.part",
+      "Build/WebComplete.data.unityweb.010.90068a8e85c0.part"
     ],
-    "sha256": "427cc7c3c2b400ec80e3fdc2a98312d32191fe38011e50aa413d60e1ed366b04"
+    "sha256": "0b20a5a7a21238bf4201f68f1eb03a5fe9420afbaac7c97529c329575d9e7c34"
   }
 }
