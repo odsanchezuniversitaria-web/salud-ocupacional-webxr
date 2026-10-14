@@ -1,17 +1,9 @@
-# Salud Ocupacional · piloto multiplataforma
+# Curso completo de seguridad industrial
 
-Piloto compilado de 15 actividades para navegador de PC, celular y Meta Quest (WebXR).
+Menú, EPP, Extintores, Planta, Alturas y Salud Ocupacional. Build público de práctica, sin credenciales ni envío de calificaciones a Nexus.
 
-Abrir **Comenzar práctica**. En Quest, usar el navegador de las gafas y después **Entrar en VR**.
+PC: mouse y teclado. Celular: horizontal, mandos táctiles y panel Acciones. WebXR: entrada VR desde navegador compatible; requiere validación en gafas físicas.
 
-- PC: WASD, clic derecho para mirar incluso durante una misión, clic sostenido para arrastrar.
-- Celular: jugar en horizontal; botón superior derecho para entrar/salir de pantalla completa. Joystick CAMINAR y control MIRAR; mantener el dedo sobre objetos para arrastrar. Deslizar dentro de los paneles para ver todo el contenido.
-- Quest: mandos, gatillo/agarre para interactuar, joystick izquierdo para caminar.
-- Los paneles se pueden minimizar sin cerrar la actividad.
+El archivo de datos se transmite en partes mediante un service worker para respetar el límite por archivo de GitHub. Requiere HTTPS, WebGL2 y memoria suficiente. No se han eliminado misiones para reducir el tamaño.
 
-Este repositorio contiene exclusivamente el build de prueba; no incluye el proyecto fuente de Unity.
-La práctica no inicia sesión ni envía resultados a Nexus. Las otras escenas no forman parte del piloto.
-El funcionamiento en gafas físicas y el rendimiento de cada dispositivo requieren pruebas reales.
-
-Publicado con GitHub Pages mediante GitHub Actions. Los recursos comprimidos utilizan el
-descompresor de Unity y nombres versionados para evitar mezclas de builds almacenados en caché.
+El piloto anterior de oficina permanece en `/office/`. Solo se publican archivos compilados, nunca el proyecto fuente.

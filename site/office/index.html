@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Salud Ocupacional · PC / Celular / Quest</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#06141b;color:#ebf7fa;font:16px system-ui}#canvas{width:100%;height:100%;display:block;touch-action:none}#welcome{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 65% 10%,#174553,#071820 65%);z-index:3}.card{width:min(560px,92vw);padding:32px;border:1px solid #2e6975;border-radius:20px;background:#0b222c;box-shadow:0 24px 80px #0008}h1{font-size:32px;line-height:1.1;margin:8px 0 20px}.eyebrow{color:#55e6cf;letter-spacing:.1em;font-size:12px}.modes{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}button{border:1px solid #4ba8b7;background:#126675;color:white;border-radius:8px;padding:13px 20px;cursor:pointer;font:600 16px system-ui}button:disabled{opacity:.4;cursor:default}button:hover:not(:disabled){background:#208396}p{line-height:1.6;color:#bcd2dc}progress{width:100%;height:12px;accent-color:#4be3cb}#status{min-height:26px}#entervr{position:fixed;z-index:2;bottom:max(8px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:none}#error{white-space:pre-wrap;color:#ffb89e}.small{font-size:13px}.badge{border:1px solid #45626e;border-radius:40px;padding:5px 12px;font-size:13px}
+
+button{background:linear-gradient(145deg,#137b93,#293768);border-color:#54b8c8;border-radius:13px;box-shadow:inset 0 1px #b5ffff33,0 4px 15px #0003}
+#fullscreen{display:none;position:fixed;z-index:6;right:max(6px,env(safe-area-inset-right));top:max(3px,env(safe-area-inset-top));width:48px;height:44px;padding:6px;font-size:26px}
+#rotate{display:none;position:fixed;inset:0;z-index:5;background:radial-gradient(ellipse at top,#174658,#06131e);align-items:center;justify-content:center;text-align:center;padding:32px}
+#rotate .phone{font-size:64px;color:#63e1ec}#rotate h2{font-size:24px}#rotate p{max-width:300px;font-size:15px}
+#screen-note{position:fixed;z-index:7;bottom:12px;left:50%;transform:translateX(-50%);max-width:80%;padding:10px 16px;border-radius:12px;background:#0c2439;pointer-events:none;font-size:13px;text-align:center}
+#screen-note:empty{display:none}
+@media(max-height:500px){.card{padding:16px 24px;max-height:94dvh;overflow:auto}h1{font-size:24px;margin:5px 0 10px}.modes{margin:10px 0}p{margin:8px 0;font-size:14px}button{min-height:44px;padding:9px 16px;font-size:14px}}
+</style></head><body>
+<button id="fullscreen" aria-label="Pantalla completa" title="Pantalla completa" aria-pressed="false">⛶</button><section id="rotate"><div><div class="phone">↻ ▭</div><h2>Gira tu celular</h2><p>Juega en horizontal para ver la oficina y los controles completos.</p><button id="rotate-fullscreen">Pantalla completa</button><p class="small">Si no gira, activa la rotación automática del celular.</p></div></section><div id="screen-note" role="status" aria-live="polite"></div><canvas id="canvas" tabindex="0"></canvas>
+<button id="entervr" disabled>Entrar en VR</button>
+<section id="welcome"><div class="card"><div class="eyebrow">CURSO INTERACTIVO · PRUEBA MULTIPLATAFORMA</div><h1>Salud y seguridad<br>en la oficina</h1><p>Recorre la oficina, corrige los riesgos y coloca cada objeto en su lugar.</p><div class="modes"><span class="badge">PC · mouse y teclado</span><span class="badge">Celular · táctil</span><span class="badge">Quest · WebXR</span></div><button id="start">Comenzar práctica</button><p id="status">15 actividades · voces guía · progreso local</p><progress id="progress" max="1" value="0" hidden></progress><div id="error" role="alert"></div><p id="xrhelp" class="small"></p><p class="small">Esta prueba de Salud Ocupacional no envía resultados a Nexus.</p></div></section>
+<script>
+var unityInstance=null;const canvas=document.getElementById('canvas'),status=document.getElementById('status'),error=document.getElementById('error'),vr=document.getElementById('entervr');
+
+const config={dataUrl:'Build/Web.e768c6500eac.data.unityweb',frameworkUrl:'Build/Web.38d5b06585ef.framework.js.unityweb',codeUrl:'Build/Web.d7194217e177.wasm.unityweb',streamingAssetsUrl:'StreamingAssets',companyName:'IndustrialCurso',productName:'OficinaMultiplataformaPilot',productVersion:'0.1',devicePixelRatio:Math.min(window.devicePixelRatio||1,1.5),showBanner:(message,type)=>{if(type==='error')error.textContent=message;}};
+document.addEventListener('onVRSupportedCheck',e=>{vr.disabled=!e.detail.supported;if(e.detail.supported)vr.style.display='block';});
+vr.addEventListener('click',()=>{if(unityInstance)unityInstance.Module.WebXR.toggleVR();});
+if(!window.isSecureContext)document.getElementById('xrhelp').textContent='Para entrar en VR desde las gafas, abre el enlace HTTPS de la prueba.';
+else if(navigator.xr)navigator.xr.isSessionSupported('immersive-vr').then(ok=>{document.getElementById('xrhelp').textContent=ok?'Quest detectado: después de cargar, pulsa Entrar en VR.':'Puedes jugar con controles de pantalla.';});
+document.getElementById('start').onclick=()=>{const start=document.getElementById('start');start.disabled=true;status.textContent='Cargando la oficina…';document.getElementById('progress').hidden=false;const script=document.createElement('script');script.src='Build/Web.35d2535e9d1d.loader.js';script.onerror=()=>{error.textContent='No se pudo descargar el juego. Revisa que el servidor esté encendido y recarga.';};script.onload=()=>createUnityInstance(canvas,config,p=>{document.getElementById('progress').value=p;status.textContent='Cargando oficina · '+Math.round(p*100)+' %';}).then(instance=>{unityInstance=instance;document.getElementById('welcome').style.display='none';canvas.focus();updateViewport();}).catch(e=>{error.textContent=String(e);status.textContent='No se pudo iniciar. Recarga para volver a intentarlo.';});document.body.appendChild(script);};
+
+const fsButton=document.getElementById('fullscreen'), rotate=document.getElementById('rotate'),screenNote=document.getElementById('screen-note');
+let isHeadset=/OculusBrowser|Quest/i.test(navigator.userAgent),noteTimer;
+const isPhone=()=>!isHeadset&&(navigator.maxTouchPoints>0&&matchMedia('(pointer:coarse)').matches||new URLSearchParams(location.search).get('touch')==='1');
+function notifyScreen(message){screenNote.textContent=message;clearTimeout(noteTimer);noteTimer=setTimeout(()=>screenNote.textContent='',6500);}
+function updateViewport(){
+ const mobile=isPhone(),portrait=innerHeight>innerWidth,full=!!(document.fullscreenElement||document.webkitFullscreenElement);
+ fsButton.style.display=mobile?'block':'none';rotate.style.display=mobile&&portrait?'flex':'none';
+ fsButton.textContent=full?'↙':'⛶';fsButton.title=fsButton.ariaLabel=full?'Salir de pantalla completa':'Pantalla completa';fsButton.setAttribute('aria-pressed',String(full));document.getElementById('rotate-fullscreen').textContent=full?'Salir de pantalla completa':'Pantalla completa';
+ if(unityInstance)unityInstance.SendMessage('OfficeBrowserBridge','SetViewportBlocked',mobile&&portrait?'1':'0');
+}
+async function toggleFullscreen(){
+ try{
+  if(document.fullscreenElement||document.webkitFullscreenElement){await (document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen());try{screen.orientation?.unlock();}catch{} }
+  else {
+   const element=document.documentElement,request=element.requestFullscreen||element.webkitRequestFullscreen;
+   if(!request){notifyScreen('Este navegador no permite pantalla completa. Gira el celular para jugar en horizontal.');return;}
+   await request.call(element);
+   try{await screen.orientation.lock('landscape');}catch{if(innerHeight>innerWidth)notifyScreen('Gira el celular a horizontal y activa la rotación automática.');}
+  }
+ }catch{notifyScreen('No se pudo cambiar a pantalla completa. Puedes jugar girando el celular a horizontal.');}
+ updateViewport();
+}
+fsButton.addEventListener('click',toggleFullscreen);document.getElementById('rotate-fullscreen').addEventListener('click',toggleFullscreen);
+window.addEventListener('resize',updateViewport);document.addEventListener('fullscreenchange',updateViewport);document.addEventListener('webkitfullscreenchange',updateViewport);
+document.addEventListener('onVRSupportedCheck',e=>{if(e.detail.supported){isHeadset=true;updateViewport();}});
+updateViewport();
+</script></body></html>
